@@ -1,0 +1,2 @@
+# cricclubs-scoreboard
+Scoreboard
