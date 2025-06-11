@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CricClubs Live Scoreboard</title>
+</head>
+<body>
+  <h2>CricClubs Live Score</h2>
+  <div>
+    <label>Club ID: <input id="clubId" value="862"></label>
+    <label>Match ID: <input id="matchId" value="734"></label>
+    <button onclick="loadScore()">Load</button>
+  </div>
+  <pre id="result" style="background:#eee; padding:1em;"></pre>
+  <script>
+    async function loadScore() {
+      const clubId = document.getElementById('clubId').value;
+      const matchId = document.getElementById('matchId').value;
+      const url = `/api/scorecard?matchId=${matchId}&clubId=${clubId}`;
+      document.getElementById('result').textContent = "Loading...";
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(await response.text());
+        const html = await response.text();
+        document.getElementById('result').textContent = html.length > 500
+          ? "Fetched! Showing first 1000 chars:\n\n" + html.slice(0, 1000)
+          : html;
+      } catch (err) {
+        document.getElementById('result').textContent = "ERROR: " + err;
+      }
+    }
+    // Load once on page load
+    loadScore();
+  </script>
+</body>
+</html>
