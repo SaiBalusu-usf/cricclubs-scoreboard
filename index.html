@@ -251,7 +251,7 @@
 <body>
   <div class="controls">
     <label>Match ID:</label>
-    <input type="number" id="matchIdInput" value="734" placeholder="Match ID">
+    <input type="number" id="matchIdInput" value="735" placeholder="Match ID">
     <button onclick="updateMatch()">Load Match</button>
     <button onclick="toggleAutoRefresh()" id="refreshBtn">Auto: ON</button>
   </div>
@@ -312,7 +312,7 @@
 
   <script>
     // Configuration - using the working endpoint from index.html
-    let MATCH_ID = 734;
+    let MATCH_ID = 735;
     const CLUB_ID = 862;
     const REFRESH_INTERVAL = 10000; // 10 seconds
     let refreshTimer;
@@ -327,7 +327,7 @@
 
     // Update match configuration
     function updateMatch() {
-      MATCH_ID = document.getElementById('matchIdInput').value || 734;
+      MATCH_ID = document.getElementById('matchIdInput').value || 735;
       
       document.getElementById('loadingIndicator').style.display = 'block';
       document.getElementById('scoreboardContent').style.display = 'none';
